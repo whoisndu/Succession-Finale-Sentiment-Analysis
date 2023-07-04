@@ -4,7 +4,7 @@ Created on Tue Jul  4 23:05:49 2023
 
 @author: NDU-PC
 """
-
+### Modify the code to print the URLs of the requests made by the browser. This will help verify if the requests are being captured correctly.
 import csv
 import time
 from seleniumwire import webdriver
