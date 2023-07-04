@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Jul  4 22:58:30 2023
+Created on Tue Jul  4 23:05:49 2023
 
 @author: NDU-PC
 """
@@ -9,7 +9,6 @@ import csv
 import time
 from seleniumwire import webdriver
 from selenium.webdriver.chrome.options import Options
-
 
 def scrape_tweets():
     # Set up Chrome options
@@ -20,7 +19,7 @@ def scrape_tweets():
 
     # Create a new instance of the Chrome driver with Selenium Wire
     driver = webdriver.Chrome(options=options)
-    driver.scopes = [".*twitter\.com.*"]
+    driver.scopes = ['.*twitter\.com.*']
 
     # Define the hashtag to search for
     hashtag = "#successionHBO OR successionfinale"
@@ -45,18 +44,11 @@ def scrape_tweets():
         # Get the requests made by the browser
         requests = driver.requests
 
-        # Extract tweet data from the requests
+        # Print the URLs of the requests
         for request in requests:
             if request.response:
                 url = request.url
-                if "https://twitter.com/i/api/graphql/" in url:
-                    json_data = request.response.body.decode("utf-8")
-                    # Process the JSON data and extract tweet details
-                    # ...
-                    # Add the tweet data to the tweets list
-                    # ...
-                    # Increment the count
-                    # ...
+                print(url)
 
         # If no more tweets are found, break the loop
         if len(tweets) == 0:
@@ -67,7 +59,7 @@ def scrape_tweets():
 
     # Write tweets to a CSV file if the list is not empty
     if tweets:
-        with open("tweets.csv", "w", newline="", encoding="utf-8") as file:
+        with open('tweets.csv', 'w', newline='', encoding='utf-8') as file:
             writer = csv.DictWriter(file, fieldnames=tweets[0].keys())
             writer.writeheader()
             writer.writerows(tweets)
@@ -78,6 +70,6 @@ def scrape_tweets():
     return count
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     count = scrape_tweets()
-    print(f"Total tweets scraped: {count}")
+    print(f'Total tweets scraped: {count}')
