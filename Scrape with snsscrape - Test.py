@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import snscrape.modules.twitter as sntwitter
 import csv
 import time
