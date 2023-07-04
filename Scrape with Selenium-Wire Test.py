@@ -106,7 +106,7 @@ def scrape_tweets():
                 break
 
     # Save tweets to a CSV file
-    filename = r"C:\Users\NDU-PC\Desktop\tweets.csv"
+    filename = r"C:\Users\Desktop\tweets.csv"
     with open(filename, "w", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=tweets[0].keys())
         writer.writeheader()
